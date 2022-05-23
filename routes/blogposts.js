@@ -1,4 +1,5 @@
 const express = require("express");
+const blogposts = require("../scheams/blogposts");
 const Blogposts = require("../scheams/blogposts");
 const router = express.Router();
 
@@ -71,24 +72,18 @@ router.put("/blogposts", async (req, res)=>{
 
 
 // 게시물 삭제 api
-router.delete("/blogposts", async (res, req)=>{
-    const { title, password } = req.body;
-
-    const blogposts = await Blogposts.find({ title });
-    if(!blogposts.length){
-        return res.status(400).json({ success: false, errorMessage: " 존재 하지 않는 게시물 입니다." });
+router.delete('/Blogposts', async (req, res) => {
+    const { password } = req.body;
+    const dataPassword = (await Blogposts.find({})).filter(
+      (a) => a.password === password
+    );
+    if (!dataPassword.length) {
+      return res
+        .status(400)
+        .json({ success: false, errorMessage: '비밀번호를 확인해주세요' });
     }
-
-
-    if(Number(password) != Number(blogposts[0].password)){
-        return res.status(400).json({ success: false, errorMessage: " 비밀번호가 일치하지 않습니다." });
-    }
-
-
-    await Blogposts.deleteOne({ title });
-
-    res.json({success: true});
-
-});
+    await blogposts.deleteOne({ password });
+    res.json({ success: true });
+  });
 
 module.exports = router;
