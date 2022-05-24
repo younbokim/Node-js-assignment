@@ -72,7 +72,7 @@ router.put("/blogposts", async (req, res)=>{
 
 
 // 게시물 삭제 api
-router.delete('/Blogposts', async (req, res) => {
+router.delete('/blogposts', async (req, res) => {
     const { password } = req.body;
     const dataPassword = (await Blogposts.find({})).filter(
       (a) => a.password === password
