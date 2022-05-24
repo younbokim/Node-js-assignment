@@ -82,7 +82,7 @@ router.delete('/blogpost', async (req, res) => {
         .status(400)
         .json({ success: false, errorMessage: '비밀번호를 확인해주세요' });
     }
-    await blogposts.deleteOne({ password });
+    await Blogposts.deleteOne({ password });
     res.json({ success: true });
   });
 
