@@ -1,5 +1,4 @@
 const express = require("express");
-const blogposts = require("../scheams/blogposts");
 const Blogposts = require("../scheams/blogposts");
 const router = express.Router();
 
@@ -8,8 +7,6 @@ const router = express.Router();
 // 게시물 전체 조회
 
 router.get("/", async (req, res) => {
-
-    const { blogname } = req.query;
 
     const blogposts = await Blogposts.find({ blogname }, {_id: 0, __v:0, password : 0, comments : 0});
 
@@ -53,6 +50,7 @@ router.get("/blogposts", async (req, res)=>{
 // 게시물 수정 api
 router.put("/blogposts", async (req, res)=>{
     const { title, password, comments } = req.body;
+
 
     const blogposts = await Blogposts.find({ title });
     if(!blogposts.length){

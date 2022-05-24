@@ -11,7 +11,7 @@ const blogpostsRouter = require("./routes/blogposts");
 
 
 app.use(express.json());
-
+app.use(express.urlencoded());
 
 app.use("/api", [blogpostsRouter]);
 
