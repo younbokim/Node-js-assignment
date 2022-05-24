@@ -7,6 +7,7 @@ const router = express.Router();
 // 게시물 전체 조회
 
 router.get("/", async (req, res) => {
+    const { blogname } = req.query;
 
     const blogposts = await Blogposts.find({ blogname }, {_id: 0, __v:0, password : 0, comments : 0});
 
