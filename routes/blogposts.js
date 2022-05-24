@@ -74,8 +74,14 @@ router.put("/blogpost", async (req, res)=>{
 
 // 게시물 삭제 api
 router.delete('/blogpost', async (req, res) => {
-    const { password } = req.body;
-    
+    const { title, password, comments } = req.body;
+
+
+    const blogposts = await Blogposts.find({ title });
+    if(!blogposts.length){
+        return res.status(400).json({ success: false, errorMessage: " 존재 하지 않는 게시물 입니다." });
+    }
+
     if(Number(password) != Number(blogposts[0].password)){
         return res.status(400).json({ success: false, errorMessage: " 비밀번호가 일치하지 않습니다." });
     }
