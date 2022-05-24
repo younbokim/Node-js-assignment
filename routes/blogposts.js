@@ -59,6 +59,8 @@ router.put("/blogposts", async (req, res)=>{
         return res.status(400).json({ success: false, errorMessage: " 존재 하지 않는 게시물 입니다." });
     }
 
+    // const postpw = await Blogposts.find({ title }); 
+    // if(postpw[ password ] != password)
 
     if(Number(password) != Number(blogposts[0].password)){
         return res.status(400).json({ success: false, errorMessage: " 비밀번호가 일치하지 않습니다." });
