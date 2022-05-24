@@ -9,9 +9,8 @@ connect();
 
 const blogpostsRouter = require("./routes/blogposts.js");
 
-
-app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.json());
 
 app.use("/blogposts", blogpostsRouter);
 
