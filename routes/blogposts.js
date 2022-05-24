@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 
 // 게시글 작성 api
 
-router.post("/blogposts", async (req, res) => {
+router.post("/blogpost", async (req, res) => {
     const { blogname, title, password, comments } = req.body;
         
     const blogposts = await Blogposts.find({ title });
@@ -35,7 +35,7 @@ router.post("/blogposts", async (req, res) => {
 
 
 // 게시글 조회 api
-router.get("/blogposts", async (req, res)=>{
+router.get("/blogpost", async (req, res)=>{
     const { title } = req.query;
 
     const blogposts = await Blogposts.find({ title }, {_id: 0, password: 0, __v: 0 });
@@ -48,7 +48,7 @@ router.get("/blogposts", async (req, res)=>{
 
 
 // 게시물 수정 api
-router.put("/blogposts", async (req, res)=>{
+router.put("/blogpost", async (req, res)=>{
     const { title, password, comments } = req.body;
 
 
@@ -72,7 +72,7 @@ router.put("/blogposts", async (req, res)=>{
 
 
 // 게시물 삭제 api
-router.delete('/blogposts', async (req, res) => {
+router.delete('/blogpost', async (req, res) => {
     const { password } = req.body;
     const dataPassword = (await Blogposts.find({})).filter(
       (a) => a.password === password

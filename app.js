@@ -7,13 +7,13 @@ const port = 9000;
 connect();
 
 
-const blogpostsRouter = require("./routes/blogposts");
+const blogpostsRouter = require("./routes/blogposts.js");
 
 
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.use("/api", [blogpostsRouter]);
+app.use("/blogposts", blogpostsRouter);
 
 
 
