@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     });
 });
 
-// 게시글 작성 api
+// 게시물 작성 api
 
 router.post('/blogpost', async (req, res) => {
     const { blogname, title, password, comments } = req.body;
@@ -30,7 +30,7 @@ router.post('/blogpost', async (req, res) => {
     res.send({ blogposts: creatBlogposts });
 });
 
-// 게시글 조회 api
+// 게시물 조회 api
 router.get('/blogpost', async (req, res) => {
     const { title } = req.query;
 
@@ -77,5 +77,13 @@ router.delete('/blogpost', async (req, res) => {
     await Blogposts.deleteOne({ password });
     res.json({ success: true });
 });
+
+// 댓글 목록 전체 조회 api
+
+// 댓글 작성 api
+
+// 댓글 수정 api
+
+// 댓글 삭제 api
 
 module.exports = router;
