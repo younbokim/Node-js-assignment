@@ -5,11 +5,17 @@ const blogpostsSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
+    },
+
+    // 포스트 아이디
+    postId: {
+        type: Number,
+        required: true,
         unique: true,
     },
 
     //작성자명
-    blogname: {
+    nickname: {
         type: String,
     },
 
@@ -22,11 +28,6 @@ const blogpostsSchema = new mongoose.Schema({
     Date: {
         type: Date,
         default: Date.now,
-    },
-
-    // 비밀번호
-    password: {
-        type: Number,
     },
 });
 

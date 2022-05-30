@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
     email: String,
-    nickname: String,
+    nickname: {
+        type: String,
+        unique: true,
+    },
     password: String,
 });
 UserSchema.virtual('userId').get(function () {
